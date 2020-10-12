@@ -1,19 +1,29 @@
-import React from 'react';
-import Clock from './Clock';
-import CountdownForm from './CountdownForm';
+import React from "react";
+import Clock from "./Clock";
+import CountdownForm from "./CountdownForm";
 
 class Countdown extends React.Component {
-  
+  constructor() {
+    super();
+    this.state = {
+      cTime: "",
+    };
+  }
 
-    render() {
+  onSetCountdownTime = (time) => {
+    this.setState({
+      cTime: time,
+    });
+  };
 
-        return (
-            <div>
-                <Clock timeInSeconds={count}/>
-                <CountdownForm onSetCountdownTime={}/>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <Clock timeInSeconds={this.state.cTime} />
+        <CountdownForm onSetCountdownTime={this.onSetCountdownTime} />
+      </div>
+    );
+  }
 }
 
 export default Countdown;
